@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+project.private.config.json
+
+# WeChat DevTools / miniprogram local
+miniprogram_npm/
+.swan/
+
+# CloudBase / local tooling
+.cloudbase/
+.tea/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and caches
+*.log
+npm-debug.log*
+.cache/
+dist/
+build/
+tmp/
+temp/
