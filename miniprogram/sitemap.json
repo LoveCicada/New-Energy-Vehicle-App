@@ -1,0 +1,9 @@
+{
+  "desc": "新车速览 sitemap",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

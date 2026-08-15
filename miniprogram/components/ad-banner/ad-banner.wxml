@@ -1,0 +1,3 @@
+<view wx:if="{{show}}" class="ad-wrap">
+  <ad unit-id="{{unitId}}" binderror="onError"></ad>
+</view>

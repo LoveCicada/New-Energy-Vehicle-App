@@ -1,0 +1,70 @@
+.mine {
+  padding: 24rpx;
+}
+
+.login-box {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 48rpx 32rpx;
+  text-align: center;
+}
+
+.hint {
+  color: #666;
+  margin-bottom: 28rpx;
+}
+
+.btn {
+  background: #0b6e4f;
+  color: #fff;
+}
+
+.section {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 16rpx;
+}
+
+.row button {
+  margin-right: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.follow-item,
+.fav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.unlink {
+  color: #0b6e4f;
+  font-size: 24rpx;
+}
+
+.fav-item {
+  display: block;
+}
+
+.fav-title {
+  font-size: 28rpx;
+}
+
+.fav-meta {
+  margin-top: 6rpx;
+  color: #999;
+  font-size: 22rpx;
+}
+
+.empty-line {
+  color: #999;
+  font-size: 24rpx;
+}

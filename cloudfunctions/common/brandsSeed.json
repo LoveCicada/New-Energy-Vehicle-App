@@ -1,0 +1,15 @@
+[
+  { "bucketId": "byd", "subBrandId": "byd", "name": "比亚迪", "sort": 10, "enabled": true },
+  { "bucketId": "byd", "subBrandId": "denza", "name": "腾势", "sort": 20, "enabled": true },
+  { "bucketId": "byd", "subBrandId": "yangwang", "name": "仰望", "sort": 30, "enabled": true },
+  { "bucketId": "byd", "subBrandId": "fangchengbao", "name": "方程豹", "sort": 40, "enabled": true },
+  { "bucketId": "geely", "subBrandId": "geely", "name": "吉利", "sort": 10, "enabled": true },
+  { "bucketId": "geely", "subBrandId": "lynkco", "name": "领克", "sort": 20, "enabled": true },
+  { "bucketId": "geely", "subBrandId": "zeekr", "name": "极氪", "sort": 30, "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "aito", "name": "问界", "sort": 10, "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "zhijie", "name": "智界", "sort": 20, "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "xiangjie", "name": "享界", "sort": 30, "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "zunjie", "name": "尊界", "sort": 40, "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "shangjie", "name": "尚界", "sort": 50, "enabled": true },
+  { "bucketId": "xiaomi", "subBrandId": "xiaomi", "name": "小米", "sort": 10, "enabled": true }
+]

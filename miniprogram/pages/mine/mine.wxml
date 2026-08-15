@@ -1,0 +1,42 @@
+<view class="mine">
+  <view wx:if="{{!loggedIn}}" class="login-box">
+    <view class="hint">登录后可关注品牌、收藏动态</view>
+    <button class="btn" bindtap="onLogin">微信一键登录</button>
+  </view>
+
+  <block wx:else>
+    <view class="section">
+      <view class="section-title">快捷关注</view>
+      <view class="row">
+        <button size="mini" data-id="byd" bindtap="onFollowBucket">比亚迪</button>
+        <button size="mini" data-id="geely" bindtap="onFollowBucket">吉利</button>
+        <button size="mini" data-id="huawei" bindtap="onFollowBucket">华为系列</button>
+        <button size="mini" data-id="xiaomi" bindtap="onFollowBucket">小米</button>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">我的关注</view>
+      <view wx:if="{{!follows.length}}" class="empty-line">暂无关注</view>
+      <view wx:for="{{follows}}" wx:key="bucketId" class="follow-item">
+        <text>{{item.name}}</text>
+        <text class="unlink" data-id="{{item.bucketId}}" bindtap="onUnfollow">取消</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">我的收藏</view>
+      <view wx:if="{{!favorites.length}}" class="empty-line">暂无收藏</view>
+      <view
+        wx:for="{{favorites}}"
+        wx:key="_id"
+        class="fav-item"
+        data-id="{{item._id}}"
+        bindtap="goDetail"
+      >
+        <view class="fav-title">{{item.title}}</view>
+        <view class="fav-meta">{{item.bucketText}} · {{item.launchStatusText}}</view>
+      </view>
+    </view>
+  </block>
+</view>

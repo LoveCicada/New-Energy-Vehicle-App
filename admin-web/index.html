@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>新车速览 · 管理后台</title>
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <div id="login-view" class="panel">
+    <h1>新车速览管理后台</h1>
+    <label>用户名 <input id="username" value="admin" /></label>
+    <label>密码 <input id="password" type="password" /></label>
+    <button id="btn-login">登录</button>
+    <p class="hint">请先在 admin-web/js/api.js 填写云函数 HTTP 根地址 BASE。</p>
+  </div>
+
+  <div id="app-view" class="hidden">
+    <header>
+      <strong>新车速览</strong>
+      <nav>
+        <button data-tab="pending">待审核</button>
+        <button data-tab="published">已发布</button>
+        <button data-tab="ingest">抓取日志</button>
+        <button data-tab="create">新建</button>
+        <button id="btn-logout">退出</button>
+      </nav>
+    </header>
+    <main>
+      <section id="tab-pending" class="tab"></section>
+      <section id="tab-published" class="tab hidden"></section>
+      <section id="tab-ingest" class="tab hidden"></section>
+      <section id="tab-create" class="tab hidden">
+        <h2>手工新建</h2>
+        <label>品牌桶
+          <select id="c-bucket">
+            <option value="byd">比亚迪</option>
+            <option value="geely">吉利</option>
+            <option value="huawei">华为系列</option>
+            <option value="xiaomi">小米</option>
+          </select>
+        </label>
+        <label>子品牌 ID <input id="c-sub" placeholder="如 denza / zeekr / aito" /></label>
+        <label>标题 <input id="c-title" /></label>
+        <label>摘要 <input id="c-summary" /></label>
+        <label>正文 <textarea id="c-body" rows="8"></textarea></label>
+        <label>价格文案 <input id="c-price" placeholder="23.99 万起" /></label>
+        <label>上市状态
+          <select id="c-launch">
+            <option value="teaser">预热</option>
+            <option value="presale">预售</option>
+            <option value="launched">上市</option>
+            <option value="facelift">改款</option>
+          </select>
+        </label>
+        <label>来源 URL <input id="c-url" /></label>
+        <button id="btn-save-draft">存草稿</button>
+        <button id="btn-save-publish">保存并发布</button>
+      </section>
+    </main>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

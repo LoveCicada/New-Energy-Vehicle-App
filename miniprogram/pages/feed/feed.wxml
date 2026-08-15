@@ -1,0 +1,56 @@
+<wxs src="./feed.wxs" module="utils" />
+<view class="feed">
+  <scroll-view scroll-x class="chips" enable-flex>
+    <view
+      wx:for="{{buckets}}"
+      wx:key="id"
+      class="chip {{bucketId === item.id ? 'chip-on' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="onBucket"
+    >{{item.name}}</view>
+  </scroll-view>
+
+  <scroll-view wx:if="{{subBrands.length}}" scroll-x class="chips chips-sub" enable-flex>
+    <view
+      class="chip {{subBrandId === '' ? 'chip-on' : ''}}"
+      data-id=""
+      bindtap="onSubBrand"
+    >全部子品牌</view>
+    <view
+      wx:for="{{subBrands}}"
+      wx:key="id"
+      class="chip {{subBrandId === item.id ? 'chip-on' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="onSubBrand"
+    >{{item.name}}</view>
+  </scroll-view>
+
+  <scroll-view scroll-x class="chips" enable-flex>
+    <view
+      wx:for="{{tags}}"
+      wx:key="*this"
+      class="chip {{utils.indexOf(selectedTags, item) >= 0 ? 'chip-on' : ''}}"
+      data-tag="{{item}}"
+      bindtap="onTag"
+    >{{item}}</view>
+  </scroll-view>
+
+  <view wx:if="{{loading}}" class="empty">加载中</view>
+  <view wx:elif="{{empty}}" class="empty">暂时还没有动态</view>
+
+  <block wx:for="{{displayList}}" wx:key="index">
+    <view wx:if="{{item.type === 'post'}}" class="card" data-id="{{item.item._id}}" bindtap="goDetail">
+      <image wx:if="{{item.item.cover}}" class="cover" src="{{item.item.cover}}" mode="aspectFill" />
+      <view class="card-body">
+        <view class="title">{{item.item.title}}</view>
+        <view class="meta">
+          <text>{{item.item.subBrandText || item.item.bucketText}}</text>
+          <text wx:if="{{item.item.launchStatusText}}"> · {{item.item.launchStatusText}}</text>
+          <text wx:if="{{item.item.priceText}}"> · {{item.item.priceText}}</text>
+        </view>
+        <view class="summary">{{item.item.summary}}</view>
+      </view>
+    </view>
+    <ad-banner wx:elif="{{item.type === 'ad'}}" unit-id="{{item.unitId}}" />
+  </block>
+</view>

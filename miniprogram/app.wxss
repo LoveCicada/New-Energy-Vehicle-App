@@ -1,0 +1,22 @@
+page {
+  background-color: #f5f6f7;
+  color: #1a1a1a;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 24rpx;
+}
+
+.btn-primary {
+  background: #0b6e4f;
+  color: #fff;
+  border-radius: 8rpx;
+}
+
+.empty {
+  padding: 120rpx 40rpx;
+  text-align: center;
+  color: #999;
+}

@@ -1,0 +1,19 @@
+[
+  { "bucketId": "byd", "subBrandId": "byd", "domain": "www.byd.com", "entryUrl": "https://www.byd.com/cn/news", "kind": "news_list", "enabled": true },
+  { "bucketId": "byd", "subBrandId": "byd", "domain": "www.byd.com", "entryUrl": "https://www.byd.com/cn", "kind": "model_page", "enabled": true },
+  { "bucketId": "byd", "subBrandId": "denza", "domain": "www.denza.com", "entryUrl": "https://www.denza.com/cn", "kind": "model_page", "enabled": true },
+  { "bucketId": "byd", "subBrandId": "yangwang", "domain": "www.yangwangauto.com", "entryUrl": "https://www.yangwangauto.com/cn", "kind": "model_page", "enabled": true },
+  { "bucketId": "byd", "subBrandId": "fangchengbao", "domain": "www.fangchengbao.com", "entryUrl": "https://www.fangchengbao.com/", "kind": "model_page", "enabled": true },
+  { "bucketId": "geely", "subBrandId": "geely", "domain": "dh.geely.com", "entryUrl": "https://dh.geely.com/Home", "kind": "model_page", "enabled": true },
+  { "bucketId": "geely", "subBrandId": "geely", "domain": "www.geelyauto.com.hk", "entryUrl": "https://www.geelyauto.com.hk/zh-cn/%e6%96%b0%e9%97%bb/", "kind": "news_list", "enabled": true },
+  { "bucketId": "geely", "subBrandId": "lynkco", "domain": "www.lynkco.com.cn", "entryUrl": "https://www.lynkco.com.cn/", "kind": "model_page", "enabled": true },
+  { "bucketId": "geely", "subBrandId": "zeekr", "domain": "www.zeekrlife.com", "entryUrl": "https://www.zeekrlife.com/zh-cn/home", "kind": "model_page", "enabled": true },
+  { "bucketId": "geely", "subBrandId": "zeekr", "domain": "www.zeekrgroup.com", "entryUrl": "https://www.zeekrgroup.com/news", "kind": "news_list", "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "aito", "domain": "hima.auto", "entryUrl": "https://hima.auto/", "kind": "model_page", "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "aito", "domain": "aito.auto", "entryUrl": "https://aito.auto/", "kind": "model_page", "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "zhijie", "domain": "hima.auto", "entryUrl": "https://hima.auto/zhijie/", "kind": "model_page", "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "xiangjie", "domain": "hima.auto", "entryUrl": "https://hima.auto/xiangjie/", "kind": "model_page", "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "zunjie", "domain": "hima.auto", "entryUrl": "https://hima.auto/zunjie/s800/", "kind": "model_page", "enabled": true },
+  { "bucketId": "huawei", "subBrandId": "shangjie", "domain": "hima.auto", "entryUrl": "https://hima.auto/shangjie/", "kind": "model_page", "enabled": true },
+  { "bucketId": "xiaomi", "subBrandId": "xiaomi", "domain": "www.xiaomiev.com", "entryUrl": "https://www.xiaomiev.com/", "kind": "model_page", "enabled": true }
+]

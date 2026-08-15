@@ -1,0 +1,4 @@
+{
+  "username": "admin",
+  "passwordHash": "SALT:PBKDF2_HEX — 用 seed-import.md 中的脚本生成，勿使用本占位值登录"
+}

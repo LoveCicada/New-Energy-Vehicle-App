@@ -1,0 +1,10 @@
+<view class="discover">
+  <view class="card" bindtap="onTap">
+    <view class="name">车机软件</view>
+    <view class="hint">即将上线</view>
+  </view>
+  <view class="card" bindtap="onTap">
+    <view class="name">用车好物</view>
+    <view class="hint">即将上线</view>
+  </view>
+</view>

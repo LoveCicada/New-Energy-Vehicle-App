@@ -1,0 +1,4 @@
+.ad-wrap {
+  margin: 20rpx 24rpx 0;
+  min-height: 0;
+}

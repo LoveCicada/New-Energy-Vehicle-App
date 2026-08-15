@@ -1,0 +1,21 @@
+<view wx:if="{{post}}" class="detail">
+  <image wx:if="{{post.cover}}" class="cover" src="{{post.cover}}" mode="aspectFill" />
+  <view class="pad">
+    <view class="title">{{post.title}}</view>
+    <view class="meta">
+      <text>{{post.subBrandText || post.bucketText}}</text>
+      <text wx:if="{{post.launchStatusText}}"> · {{post.launchStatusText}}</text>
+      <text wx:if="{{post.priceText}}"> · {{post.priceText}}</text>
+    </view>
+    <view wx:if="{{post.tags && post.tags.length}}" class="tags">
+      <text wx:for="{{post.tags}}" wx:key="*this" class="tag">{{item}}</text>
+    </view>
+    <view class="body">{{post.body}}</view>
+    <view class="source" bindtap="openSource">
+      <text>{{post.sourceNote || '来源说明'}}</text>
+      <text wx:if="{{post.sourceUrl}}" class="link">（点击复制原文链接）</text>
+    </view>
+    <button class="fav" bindtap="onFavorite">{{favorited ? '取消收藏' : '收藏'}}</button>
+  </view>
+  <ad-banner unit-id="{{adUnitIdDetail}}" />
+</view>

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "openapi": ["security.msgSecCheck"]
+  },
+  "timeout": 60,
+  "triggers": [
+    {
+      "name": "every6h",
+      "type": "timer",
+      "config": "0 */6 * * * *"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+const assert = require('assert')
+const { buildListWhere } = require('../cloudfunctions/common/listPostsQuery')
+
+const w = buildListWhere({ bucketId: 'byd', tags: ['SUV'] })
+assert.strictEqual(w.status, 'published')
+assert.strictEqual(w.bucketId, 'byd')
+assert.deepStrictEqual(w.tags, ['SUV'])
+const all = buildListWhere({})
+assert.strictEqual(all.status, 'published')
+assert.strictEqual(all.bucketId, undefined)
+console.log('listPostsQuery.test.js PASS')
