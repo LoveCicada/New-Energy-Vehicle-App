@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>新车速览</title>
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div class="phone">
+    <header class="nav" id="nav-title">新车速览</header>
+
+    <main class="main">
+      <!-- Feed -->
+      <section id="view-feed" class="view">
+        <div class="chips" id="bucket-chips"></div>
+        <div class="chips hidden" id="sub-chips"></div>
+        <div class="chips" id="tag-chips"></div>
+        <div id="feed-list"></div>
+        <div id="feed-empty" class="empty hidden">暂时还没有动态</div>
+      </section>
+
+      <!-- Discover -->
+      <section id="view-discover" class="view hidden">
+        <div class="card tap" data-soon>
+          <div class="card-title">车机软件</div>
+          <div class="hint">即将上线</div>
+        </div>
+        <div class="card tap" data-soon>
+          <div class="card-title">用车好物</div>
+          <div class="hint">即将上线</div>
+        </div>
+      </section>
+
+      <!-- Mine -->
+      <section id="view-mine" class="view hidden">
+        <div id="mine-guest" class="card">
+          <p class="hint">登录后可关注品牌、收藏动态</p>
+          <button class="btn" id="btn-login">模拟登录</button>
+        </div>
+        <div id="mine-user" class="hidden">
+          <div class="card">
+            <div class="section-title">快捷关注</div>
+            <div class="row" id="quick-follow"></div>
+          </div>
+          <div class="card">
+            <div class="section-title">我的关注</div>
+            <div id="follow-list"></div>
+          </div>
+          <div class="card">
+            <div class="section-title">我的收藏</div>
+            <div id="fav-list"></div>
+          </div>
+          <button class="btn btn-ghost" id="btn-logout">退出登录</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Detail overlay -->
+    <section id="view-detail" class="detail hidden">
+      <header class="nav detail-nav">
+        <button type="button" class="back" id="btn-back">返回</button>
+        <span>动态详情</span>
+      </header>
+      <div class="detail-body" id="detail-body"></div>
+    </section>
+
+    <nav class="tabbar">
+      <button type="button" class="tab on" data-tab="feed">动态</button>
+      <button type="button" class="tab" data-tab="discover">发现</button>
+      <button type="button" class="tab" data-tab="mine">我的</button>
+    </nav>
+
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

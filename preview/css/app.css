@@ -1,0 +1,238 @@
+:root {
+  --green: #0b6e4f;
+  --bg: #f5f6f7;
+  --text: #1a1a1a;
+  --muted: #888;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "PingFang SC", "Segoe UI", sans-serif;
+  background: #dfe5e2;
+  color: var(--text);
+}
+
+.phone {
+  position: relative;
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 40px rgba(0,0,0,.08);
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+
+.main {
+  flex: 1;
+  padding: 0 0 64px;
+  overflow-y: auto;
+}
+
+.view { padding: 8px 0 16px; }
+.hidden { display: none !important; }
+
+.chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 10px 14px 0;
+  scrollbar-width: none;
+}
+.chips::-webkit-scrollbar { display: none; }
+
+.chip {
+  flex: 0 0 auto;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  color: #666;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.chip.on {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.card {
+  margin: 12px 14px 0;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.card.tap { cursor: pointer; }
+.card-title { font-size: 16px; font-weight: 600; }
+.meta { margin-top: 6px; color: var(--green); font-size: 12px; }
+.summary {
+  margin-top: 8px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.hint { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
+.section-title { font-weight: 600; margin-bottom: 10px; }
+
+.feed-item { cursor: pointer; }
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 48px 16px;
+}
+
+.tabbar {
+  position: sticky;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #fff;
+  border-top: 1px solid #eee;
+  height: 56px;
+}
+.tab {
+  border: 0;
+  background: transparent;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+}
+.tab.on { color: var(--green); font-weight: 600; }
+
+.btn {
+  border: 0;
+  background: var(--green);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-ghost {
+  background: #fff;
+  color: var(--green);
+  border: 1px solid var(--green);
+  margin: 12px 14px;
+  width: calc(100% - 28px);
+}
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+.row button {
+  border: 1px solid #e5e5e5;
+  background: #eef7f3;
+  color: var(--green);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+.line button {
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.detail {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+.detail-nav {
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0 12px;
+}
+.back {
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  cursor: pointer;
+  font-size: 14px;
+}
+.detail-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 24px;
+}
+.detail-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #e8e8e8;
+}
+.detail-pad { padding: 16px; background: #fff; }
+.detail-pad h1 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.4;
+}
+.tags { margin-top: 10px; }
+.tag {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  padding: 2px 8px;
+  background: #eef7f3;
+  color: var(--green);
+  border-radius: 4px;
+  font-size: 12px;
+}
+.body-text {
+  margin-top: 16px;
+  white-space: pre-wrap;
+  line-height: 1.7;
+  font-size: 15px;
+}
+.source {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+  color: var(--muted);
+  font-size: 13px;
+}
+.source a { color: var(--green); }
+
+.toast {
+  position: absolute;
+  left: 50%;
+  bottom: 80px;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,.78);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  z-index: 50;
+  max-width: 80%;
+  text-align: center;
+}

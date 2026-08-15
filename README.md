@@ -3,6 +3,24 @@
 微信小程序：国内新能源车企（比亚迪族、吉利族、鸿蒙智行五界、小米）新车动态速览。  
 技术栈：原生小程序 + 微信云开发（不自购云服务器）。
 
+## 浏览器功能演示（无需微信开发者工具）
+
+仓库内 `preview/` 是静态 HTML 原型，数据在 `preview/data/posts.json`（由官方白名单页抓取整理）。
+
+```bash
+# 刷新演示数据（可选）
+node scripts/fetch-preview-data.js
+
+# 在 preview 目录起静态服务（推荐，避免 file:// 无法加载 JSON）
+npx --yes serve preview -p 5173
+```
+
+浏览器打开提示的本地地址（如 `http://localhost:5173`），可体验：
+
+- 动态：品牌桶 / 子品牌 / 标签筛选与详情
+- 发现：车机软件、用车好物「即将上线」
+- 我的：模拟登录、关注、收藏（存浏览器 localStorage）
+
 ## 你需要准备的环境
 
 1. [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)

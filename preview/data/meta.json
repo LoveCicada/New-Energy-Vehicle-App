@@ -1,0 +1,91 @@
+{
+  "fetchedAt": "2026-08-15T14:23:05.569Z",
+  "count": 17,
+  "report": [
+    {
+      "url": "https://www.byd.com/cn/news",
+      "status": "ok",
+      "id": "p_627c21164b65"
+    },
+    {
+      "url": "https://www.byd.com/cn",
+      "status": "ok",
+      "id": "p_02ba1e72e674"
+    },
+    {
+      "url": "https://www.denza.com/cn",
+      "status": "ok",
+      "id": "p_9beb6c5573ac"
+    },
+    {
+      "url": "https://www.yangwangauto.com/cn",
+      "status": "ok",
+      "id": "p_d91166b51c46"
+    },
+    {
+      "url": "https://www.fangchengbao.com/",
+      "status": "ok",
+      "id": "p_bd6ad7283df5"
+    },
+    {
+      "url": "https://dh.geely.com/Home",
+      "status": "ok",
+      "id": "p_68b7fdc6aa5a"
+    },
+    {
+      "url": "https://www.geelyauto.com.hk/zh-cn/%e6%96%b0%e9%97%bb/",
+      "status": "ok",
+      "id": "p_4eaa23d9402a"
+    },
+    {
+      "url": "https://www.lynkco.com.cn/",
+      "status": "ok",
+      "id": "p_c25a293389a7"
+    },
+    {
+      "url": "https://www.zeekrlife.com/zh-cn/home",
+      "status": "ok",
+      "id": "p_aff9f5b9d42e"
+    },
+    {
+      "url": "https://www.zeekrgroup.com/news",
+      "status": "ok",
+      "id": "p_48ea4a2a0741"
+    },
+    {
+      "url": "https://hima.auto/",
+      "status": "ok",
+      "id": "p_ea5db6dda096"
+    },
+    {
+      "url": "https://aito.auto/",
+      "status": "ok",
+      "id": "p_dea28387b86a"
+    },
+    {
+      "url": "https://hima.auto/zhijie/",
+      "status": "ok",
+      "id": "p_dd2d9e2c192f"
+    },
+    {
+      "url": "https://hima.auto/xiangjie/",
+      "status": "ok",
+      "id": "p_89842798a504"
+    },
+    {
+      "url": "https://hima.auto/zunjie/s800/",
+      "status": "ok",
+      "id": "p_8cfc4ed1288d"
+    },
+    {
+      "url": "https://hima.auto/shangjie/",
+      "status": "ok",
+      "id": "p_3f6dcc3be8a1"
+    },
+    {
+      "url": "https://www.xiaomiev.com/",
+      "status": "ok",
+      "id": "p_0fb9e86edee3"
+    }
+  ]
+}
