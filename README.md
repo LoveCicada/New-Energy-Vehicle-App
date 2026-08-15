@@ -84,10 +84,11 @@ node tests/composeRules.test.js
 
 ## 目录
 
+- `preview/` 浏览器功能演示（本地 JSON）
 - `miniprogram/` 用户端
 - `cloudfunctions/` 云函数
 - `admin-web/` 管理后台静态站
-- `scripts/` 种子数据
+- `scripts/` 种子数据与 `fetch-preview-data.js`
 - `docs/superpowers/` 设计与实现计划
 - `tests/` Node 断言测试
 
