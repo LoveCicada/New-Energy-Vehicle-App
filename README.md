@@ -11,15 +11,25 @@
 # 刷新演示数据（可选）
 node scripts/fetch-preview-data.js
 
-# 在 preview 目录起静态服务（推荐，避免 file:// 无法加载 JSON）
-npx --yes serve preview -p 5173
+# 启动本地预览（零依赖，不经过 npm 下载，推荐）
+node scripts/serve-preview.js
 ```
 
-浏览器打开提示的本地地址（如 `http://localhost:5173`），可体验：
+浏览器打开 `http://127.0.0.1:5173`，可体验：
 
 - 动态：品牌桶 / 子品牌 / 标签筛选与详情
 - 发现：车机软件、用车好物「即将上线」
 - 我的：模拟登录、关注、收藏（存浏览器 localStorage）
+
+若坚持使用 `npx serve` 而遇到 `ERR_SOCKET_TIMEOUT`，是 npm 联网超时，可先换国内镜像并加大超时后再试：
+
+```bash
+npm config set registry https://registry.npmmirror.com
+npm config set fetch-timeout 120000
+npx --yes serve preview -p 5173
+```
+
+一般不必升级全局 npm；本仓库推荐直接用 `node scripts/serve-preview.js`。
 
 ## 你需要准备的环境
 
