@@ -1,5 +1,6 @@
 const config = {
-  envId: 'YOUR_ENV_ID',
+  appId: 'wxb2f1332cae0882b1',
+  envId: '',
   adUnitIdFeed: '',
   adUnitIdDetail: ''
 }

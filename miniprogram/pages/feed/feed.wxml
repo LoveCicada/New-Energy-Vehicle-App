@@ -39,7 +39,7 @@
   <view wx:elif="{{empty}}" class="empty">暂时还没有动态</view>
 
   <block wx:for="{{displayList}}" wx:key="index">
-    <view wx:if="{{item.type === 'post'}}" class="card" data-id="{{item.item._id}}" bindtap="goDetail">
+    <view wx:if="{{item.type === 'post'}}" class="card" data-id="{{item.item.id}}" bindtap="goDetail">
       <image wx:if="{{item.item.cover}}" class="cover" src="{{item.item.cover}}" mode="aspectFill" />
       <view class="card-body">
         <view class="title">{{item.item.title}}</view>

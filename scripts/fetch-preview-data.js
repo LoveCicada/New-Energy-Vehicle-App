@@ -1,5 +1,6 @@
 /**
  * Fetch whitelist official pages and write preview/data/posts.json
+ * plus miniprogram/data/posts.json (same payload, for local-data miniprogram).
  * Usage: node scripts/fetch-preview-data.js
  */
 const fs = require('fs')
@@ -211,7 +212,12 @@ async function main() {
   })
 
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true })
-  fs.writeFileSync(postsPath, JSON.stringify(posts, null, 2), 'utf8')
+  const payload = JSON.stringify(posts, null, 2)
+  fs.writeFileSync(postsPath, payload, 'utf8')
+  const mpDir = path.join(ROOT, 'miniprogram', 'data')
+  if (!fs.existsSync(mpDir)) fs.mkdirSync(mpDir, { recursive: true })
+  const mpPostsPath = path.join(mpDir, 'posts.json')
+  fs.writeFileSync(mpPostsPath, payload, 'utf8')
   fs.writeFileSync(
     metaPath,
     JSON.stringify(
@@ -226,6 +232,7 @@ async function main() {
     'utf8'
   )
   console.log('Wrote', posts.length, 'posts to', postsPath)
+  console.log('Wrote', posts.length, 'posts to', mpPostsPath)
   console.log('Meta:', metaPath)
 }
 

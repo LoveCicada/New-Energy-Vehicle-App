@@ -30,35 +30,22 @@ Page({
     })
     this.reload()
   },
-  async reload() {
-    const { callFn } = require('../../utils/request')
-    const { launchStatusText, bucketText, SUB_BRANDS } = require('../../utils/format')
-    const { get } = require('../../config')
+  reload() {
+    const { listPosts } = require('../../utils/posts')
     this.setData({ loading: true })
-    try {
-      const res = await callFn('listPosts', {
-        bucketId: this.data.bucketId || undefined,
-        subBrandId: this.data.subBrandId || undefined,
-        tags: this.data.selectedTags.length ? this.data.selectedTags : undefined,
-        page: 1,
-        pageSize: 20
-      })
-      const list = (res.list || []).map((p) => ({
-        ...p,
-        launchStatusText: launchStatusText(p.launchStatus),
-        bucketText: bucketText(p.bucketId),
-        subBrandText: (SUB_BRANDS[p.subBrandId] || p.subBrandId || '')
-      }))
-      this.setData({
-        list,
-        displayList: this.withAds(list),
-        empty: list.length === 0,
-        loading: false
-      })
-    } catch (e) {
-      this.setData({ loading: false })
-      wx.showToast({ title: '网络异常，请重试', icon: 'none' })
-    }
+    const list = listPosts({
+      bucketId: this.data.bucketId || undefined,
+      subBrandId: this.data.subBrandId || undefined,
+      tags: this.data.selectedTags.length ? this.data.selectedTags : undefined,
+      page: 1,
+      pageSize: 50
+    })
+    this.setData({
+      list,
+      displayList: this.withAds(list),
+      empty: list.length === 0,
+      loading: false
+    })
   },
   withAds(list) {
     const { get } = require('../../config')
@@ -74,7 +61,7 @@ Page({
   onBucket(e) {
     const id = e.currentTarget.dataset.id
     const { SUB_BY_BUCKET } = require('../../utils/format')
-    const subBrands = id ? (SUB_BY_BUCKET[id] || []) : []
+    const subBrands = id ? SUB_BY_BUCKET[id] || [] : []
     this.setData({ bucketId: id, subBrandId: '', subBrands }, () => this.reload())
   },
   onSubBrand(e) {

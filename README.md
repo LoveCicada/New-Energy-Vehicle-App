@@ -1,74 +1,55 @@
-# 新车速览 / NEV Glance
+# 看Car / NEV Glance
 
 微信小程序：国内新能源车企（比亚迪族、吉利族、鸿蒙智行五界、小米）新车动态速览。  
-技术栈：原生小程序 + 微信云开发（不自购云服务器）。
+第一版**不使用微信云开发**。数据在电脑上抓取后写入包内 JSON，再手动上传发布。
+
+## 导入（不使用云服务）
+
+1. 用[微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)导入**本仓库根目录**（含 `project.config.json` 和 `miniprogram/` 的那份代码）。
+2. 导入对话框选 **「不使用云服务」**，不必勾选云开发服务条款。
+3. AppID 已写入：`wxb2f1332cae0882b1`。
+
+注意：若本机还有 `E:\code\AI\New-Energy-Vehicle-App` 之类的目录，请确认导入的是含 `miniprogram/` 的这份仓库（例如 `E:\code\AI\WeChatAppp`）。
+
+## 数据怎么更新
+
+用户端**不会**自动联网刷新。流程：
+
+```text
+本机脚本抓取官方页 → miniprogram/data/posts.json → 开发者工具上传并发布 → 用户看到新内容
+```
+
+```bash
+# 抓取并同时写入 preview/data/posts.json 与 miniprogram/data/posts.json
+node scripts/fetch-preview-data.js
+```
+
+然后在微信开发者工具里上传、提交审核/发布。每次改内容都要重新发一版（有审核周期）。包内 JSON 不宜过大（主包有体积上限）。
+
+关注 / 收藏用 `wx.setStorageSync` 存在用户手机，不登录云端、不跨设备同步。浏览不强制登录。
 
 ## 浏览器功能演示（无需微信开发者工具）
 
-仓库内 `preview/` 是静态 HTML 原型，数据在 `preview/data/posts.json`（由官方白名单页抓取整理）。
+仓库内 `preview/` 是静态 HTML 原型，数据在 `preview/data/posts.json`。
 
 ```bash
-# 刷新演示数据（可选）
-node scripts/fetch-preview-data.js
-
-# 启动本地预览（零依赖，不经过 npm 下载，推荐）
 node scripts/serve-preview.js
 ```
 
-浏览器打开 `http://127.0.0.1:5173`，可体验：
-
-- 动态：品牌桶 / 子品牌 / 标签筛选与详情
-- 发现：车机软件、用车好物「即将上线」
-- 我的：模拟登录、关注、收藏（存浏览器 localStorage）
-
-若坚持使用 `npx serve` 而遇到 `ERR_SOCKET_TIMEOUT`，是 npm 联网超时，可先换国内镜像并加大超时后再试：
-
-```bash
-npm config set registry https://registry.npmmirror.com
-npm config set fetch-timeout 120000
-npx --yes serve preview -p 5173
-```
-
-一般不必升级全局 npm；本仓库推荐直接用 `node scripts/serve-preview.js`。
+浏览器打开 `http://127.0.0.1:5173`。若坚持使用 `npx serve` 遇到 `ERR_SOCKET_TIMEOUT`，可先换国内镜像，或直接用上面的零依赖脚本。
 
 ## 你需要准备的环境
 
-1. [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
-2. [微信公众平台](https://mp.weixin.qq.com) 小程序账号（可先个人主体）
-3. Node.js LTS（跑 `tests/` 与生成管理员密码哈希）
-4. Git（本仓库已对接 GitHub）
+1. 微信开发者工具
+2. 微信公众平台小程序账号（已注册名称：看Car）
+3. Node.js LTS（跑抓取脚本与 `tests/`）
+4. Git
 
-## 快速开始
+广告位 `miniprogram/config.js` 里的 `adUnitIdFeed` / `adUnitIdDetail` 先留空即可。`envId` 可留空。
 
-1. **注册小程序**  
-   - 名称：`新车速览`（占用则用 `绿牌速览`）  
-   - 简介：`新能源车型上市与价格速览`（不要写「新闻聚合」）  
-   - 类目：生活服务 / 信息查询类（以当时平台可选为准）
+`cloudfunctions/` 与 `admin-web/` 仍保留在仓库，第一版小程序不部署。
 
-2. **克隆本仓库**，用微信开发者工具导入项目根目录。
-
-3. **填写配置**  
-   - `project.config.json` → `appid`  
-   - `miniprogram/config.js` → `envId`  
-   - 广告位 `adUnitIdFeed` / `adUnitIdDetail` 先留空
-
-4. **开通云开发**（免费体验环境即可）  
-   - 按 `scripts/seed-import.md` 建集合并导入 `brands.json`、`ingest_sources.json`  
-   - 生成管理员写入 `admins`
-
-5. **部署全部云函数**（右键每个函数「上传并部署：云端安装依赖」）  
-   - 特别注意：`ingestRun` 依赖本地包 `nev-common`，需在含 `cloudfunctions/common` 的结构下安装依赖  
-   - `ingestRun` 超时建议 ≥ 60s，并开启公网出访
-
-6. **定时触发器**  
-   - 为 `ingestRun` 配置 cron：`0 */6 * * *`（每 6 小时）
-
-7. **管理后台**  
-   - 云开发静态网站托管上传 `admin-web/`  
-   - 为 `adminLogin`、`adminListPosts`、`adminPublish`、`adminOffline`、`adminUpsertPost`、`adminIngestLog` 开启 HTTP 访问  
-   - 修改 `admin-web/js/api.js` 中 `BASE` 为你的 HTTP 根地址
-
-## 本地单测（无需微信工具）
+## 本地单测
 
 ```bash
 node tests/whitelist.test.js
@@ -78,14 +59,12 @@ node tests/composeRules.test.js
 
 ## 手测清单
 
+- [ ] 导入时选「不使用云服务」，模拟器能打开列表（不报云函数错误）
 - [ ] 未登录可浏览、筛选
-- [ ] 关注/收藏拉起登录；登录失败仍可浏览
-- [ ] 我的：关注可取消；收藏与详情一致
+- [ ] 关注/收藏写入本机；「我的」与详情一致
 - [ ] 发现双卡片 toast「即将上线」
 - [ ] adUnit 为空无空白坑
-- [ ] 流水线：同 URL 不重复；官方可自动发布；安全/缺字段进待审核；燃油页不入库
-- [ ] 后台：待审核发布/丢弃；手工新建；下架后用户端不可见
-- [ ] 文案无「华为汽车」；导航栏「新车速览」
+- [ ] 文案无「华为汽车」；导航栏「看Car」
 
 ## 流量主（以后）
 
@@ -94,11 +73,11 @@ node tests/composeRules.test.js
 
 ## 目录
 
-- `preview/` 浏览器功能演示（本地 JSON）
-- `miniprogram/` 用户端
-- `cloudfunctions/` 云函数
-- `admin-web/` 管理后台静态站
-- `scripts/` 种子数据与 `fetch-preview-data.js`
+- `preview/` 浏览器功能演示
+- `miniprogram/` 用户端（读 `data/posts.json`）
+- `cloudfunctions/` 云函数（第一版不部署）
+- `admin-web/` 管理后台静态站（第一版不用）
+- `scripts/` 种子数据与抓取脚本
 - `docs/superpowers/` 设计与实现计划
 - `tests/` Node 断言测试
 
