@@ -1,45 +1,49 @@
 <wxs src="./feed.wxs" module="utils" />
 <view class="feed">
-  <scroll-view scroll-x class="chips" enable-flex>
+  <view class="chips">
     <view
       wx:for="{{buckets}}"
       wx:key="id"
       class="chip {{bucketId === item.id ? 'chip-on' : ''}}"
-      data-id="{{item.id}}"
-      bindtap="onBucket"
+      hover-class="chip-hover"
+      data-id="{{item.id || 'all'}}"
+      catchtap="onBucket"
     >{{item.name}}</view>
-  </scroll-view>
+  </view>
 
-  <scroll-view wx:if="{{subBrands.length}}" scroll-x class="chips chips-sub" enable-flex>
+  <view wx:if="{{subBrands.length}}" class="chips chips-sub">
     <view
       class="chip {{subBrandId === '' ? 'chip-on' : ''}}"
-      data-id=""
-      bindtap="onSubBrand"
+      hover-class="chip-hover"
+      data-id="all"
+      catchtap="onSubBrand"
     >全部子品牌</view>
     <view
       wx:for="{{subBrands}}"
       wx:key="id"
       class="chip {{subBrandId === item.id ? 'chip-on' : ''}}"
+      hover-class="chip-hover"
       data-id="{{item.id}}"
-      bindtap="onSubBrand"
+      catchtap="onSubBrand"
     >{{item.name}}</view>
-  </scroll-view>
+  </view>
 
-  <scroll-view scroll-x class="chips" enable-flex>
+  <view class="chips">
     <view
       wx:for="{{tags}}"
       wx:key="*this"
       class="chip {{utils.indexOf(selectedTags, item) >= 0 ? 'chip-on' : ''}}"
+      hover-class="chip-hover"
       data-tag="{{item}}"
-      bindtap="onTag"
+      catchtap="onTag"
     >{{item}}</view>
-  </scroll-view>
+  </view>
 
   <view wx:if="{{loading}}" class="empty">加载中</view>
   <view wx:elif="{{empty}}" class="empty">暂时还没有动态</view>
 
-  <block wx:for="{{displayList}}" wx:key="index">
-    <view wx:if="{{item.type === 'post'}}" class="card" data-id="{{item.item.id}}" bindtap="goDetail">
+  <block wx:for="{{displayList}}" wx:key="id">
+    <view wx:if="{{item.type === 'post'}}" class="card" data-id="{{item.id}}" catchtap="goDetail">
       <image wx:if="{{item.item.cover}}" class="cover" src="{{item.item.cover}}" mode="aspectFill" />
       <view class="card-body">
         <view class="title">{{item.item.title}}</view>

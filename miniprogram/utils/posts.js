@@ -1,4 +1,5 @@
-const RAW = require('../data/posts.json')
+const LOADED = require('../data/posts.json')
+const RAW = Array.isArray(LOADED) ? LOADED : []
 const { launchStatusText, bucketText, SUB_BRANDS } = require('./format')
 
 function decorate(p) {
