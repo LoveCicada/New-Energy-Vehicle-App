@@ -1,4 +1,4 @@
-# One-shot generator for local model cover placeholders (750x420 PNG).
+﻿# One-shot generator for local model cover placeholders (750x420 PNG).
 Add-Type -AssemblyName System.Drawing
 
 $dir = Join-Path $PSScriptRoot '..\miniprogram\assets\models' | Resolve-Path -ErrorAction SilentlyContinue
@@ -50,8 +50,8 @@ $covers = @(
   @{ file = 'xia.png';       hex = '#1a2744'; label = 'XIA' },
   @{ file = 'd9.png';        hex = '#3a2a18'; label = 'D9' },
   @{ file = 'u8.png';        hex = '#222222'; label = 'U8' },
-  @{ file = 'leopard5.png';  hex = '#3d2a12'; label = '豹5' },
-  @{ file = 'galaxy.png';    hex = '#0b3d2e'; label = '银河' },
+  @{ file = 'leopard5.png';  hex = '#3d2a12'; label = 'BAO5' },
+  @{ file = 'galaxy.png';    hex = '#0b3d2e'; label = 'GALAXY' },
   @{ file = 'lynkco08.png';  hex = '#333333'; label = '08' },
   @{ file = 'zeekr007.png';  hex = '#1a1a1a'; label = '007' },
   @{ file = 'm9.png';        hex = '#0b6e4f'; label = 'M9' },
