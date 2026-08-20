@@ -37,6 +37,12 @@
   opacity: 0.7;
 }
 
+.empty-clear {
+  margin-top: 24rpx;
+  color: #0b6e4f;
+  font-size: 28rpx;
+}
+
 .card {
   margin: 20rpx 24rpx 0;
   background: #fff;

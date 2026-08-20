@@ -97,7 +97,16 @@ Page({
     const id = datasetId(e)
     const { SUB_BY_BUCKET } = require('../../utils/format')
     const subBrands = id ? SUB_BY_BUCKET[id] || [] : []
-    this.setData({ bucketId: id, subBrandId: '', subBrands: subBrands }, () => this.reload())
+    this.setData(
+      { bucketId: id, subBrandId: '', subBrands: subBrands, selectedTags: [] },
+      () => this.reload()
+    )
+  },
+  clearFilters() {
+    this.setData(
+      { bucketId: '', subBrandId: '', subBrands: [], selectedTags: [] },
+      () => this.reload()
+    )
   },
   onSubBrand(e) {
     this.setData({ subBrandId: datasetId(e) }, () => this.reload())

@@ -40,7 +40,10 @@
   </view>
 
   <view wx:if="{{loading}}" class="empty">加载中</view>
-  <view wx:elif="{{empty}}" class="empty">暂时还没有动态</view>
+  <view wx:elif="{{empty}}" class="empty">
+    <view>暂时还没有动态</view>
+    <view class="empty-clear" catchtap="clearFilters">清除筛选</view>
+  </view>
 
   <block wx:for="{{displayList}}" wx:key="id">
     <view wx:if="{{item.type === 'post'}}" class="card" data-id="{{item.id}}" catchtap="goDetail">
