@@ -1,0 +1,17 @@
+---
+description: 看Car 原生小程序规范。生成或修改页面、组件、样式时必须遵守。
+globs: miniprogram/**/*.{js,wxml,wxss,json,wxs}
+alwaysApply: true
+---
+
+# 看Car 微信小程序规范
+
+- 产品名「看Car」。只用原生 WXML + WXSS + JS + JSON，禁止 HTML/React/Vue、禁止 `div`/`span`/`p`/`img`、禁止 `fetch`/`document`/CSS Grid。
+- 布局用 Flex 与 `rpx`。结构用 `view` / `text` / `image` / `scroll-view`。
+- 动态列表只读 `utils/posts.js`（数据在 `posts-data.js`）。禁止为列表/详情调用 `wx.request` 或 `wx.cloud`。`utils/request.js` 闲置，不要再接到页面。
+- 关注/收藏只用 `utils/storage.js`（本机 `setStorageSync`），不要做成云登录。
+- 文案禁止「华为汽车」；鸿蒙智行五界称「华为系列」或具体子品牌（问界/智界/享界/尊界/尚界）。
+- 新页面必须 js/wxml/wxss/json 四件套，并注册到 `miniprogram/app.json`。
+- `setData` 只传变化字段；列表卡片不要带长 `body`（沿用 `toCard`）。
+- 不要把 AppSecret、密钥写进小程序。不要引入 Vant/TDesign。
+- 点击热区约 ≥ 88rpx；底部留白考虑安全区。

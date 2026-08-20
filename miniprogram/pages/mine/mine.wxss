@@ -1,34 +1,34 @@
 .mine {
-  padding: 24rpx;
+  padding: var(--space-3);
 }
 
 .login-box {
-  background: #fff;
-  border-radius: 12rpx;
-  padding: 48rpx 32rpx;
+  background: var(--color-card);
+  border-radius: var(--radius-m);
+  padding: 48rpx var(--space-4);
   text-align: center;
 }
 
 .hint {
-  color: #666;
+  color: var(--color-text-2);
   margin-bottom: 28rpx;
 }
 
 .btn {
-  background: #0b6e4f;
+  background: var(--color-brand);
   color: #fff;
 }
 
 .section {
-  background: #fff;
-  border-radius: 12rpx;
+  background: var(--color-card);
+  border-radius: var(--radius-m);
   padding: 28rpx;
   margin-bottom: 20rpx;
 }
 
 .section-title {
   font-weight: 600;
-  margin-bottom: 16rpx;
+  margin-bottom: var(--space-2);
 }
 
 .row button {
@@ -41,12 +41,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16rpx 0;
+  padding: var(--space-2) 0;
   border-top: 1rpx solid #f0f0f0;
 }
 
 .unlink {
-  color: #0b6e4f;
+  color: var(--color-brand);
   font-size: 24rpx;
 }
 
@@ -60,11 +60,11 @@
 
 .fav-meta {
   margin-top: 6rpx;
-  color: #999;
+  color: var(--color-text-3);
   font-size: 22rpx;
 }
 
 .empty-line {
-  color: #999;
+  color: var(--color-text-3);
   font-size: 24rpx;
 }

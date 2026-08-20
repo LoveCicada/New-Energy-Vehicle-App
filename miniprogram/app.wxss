@@ -1,22 +1,38 @@
 page {
-  background-color: #f5f6f7;
-  color: #1a1a1a;
+  --color-brand: #0b6e4f;
+  --color-brand-deep: #085a41;
+  --color-bg: #f5f6f7;
+  --color-card: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-2: #666666;
+  --color-text-3: #999999;
+  --color-line: #e5e5e5;
+  --color-tag-bg: #eef7f3;
+  --radius-s: 8rpx;
+  --radius-m: 12rpx;
+  --radius-l: 16rpx;
+  --space-1: 8rpx;
+  --space-2: 16rpx;
+  --space-3: 24rpx;
+  --space-4: 32rpx;
+  background: var(--color-bg);
+  color: var(--color-text);
   font-size: 28rpx;
   box-sizing: border-box;
 }
 
 .container {
-  padding: 24rpx;
+  padding: var(--space-3);
 }
 
 .btn-primary {
-  background: #0b6e4f;
+  background: var(--color-brand);
   color: #fff;
-  border-radius: 8rpx;
+  border-radius: var(--radius-s);
 }
 
 .empty {
   padding: 120rpx 40rpx;
   text-align: center;
-  color: #999;
+  color: var(--color-text-3);
 }

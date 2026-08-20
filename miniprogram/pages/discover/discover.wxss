@@ -1,11 +1,11 @@
 .discover {
-  padding: 24rpx;
+  padding: var(--space-3);
 }
 
 .card {
-  background: #fff;
-  border-radius: 12rpx;
-  padding: 40rpx 32rpx;
+  background: var(--color-card);
+  border-radius: var(--radius-m);
+  padding: 40rpx var(--space-4);
   margin-bottom: 20rpx;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .hint {
-  margin-top: 8rpx;
-  color: #999;
+  margin-top: var(--space-1);
+  color: var(--color-text-3);
   font-size: 24rpx;
 }
