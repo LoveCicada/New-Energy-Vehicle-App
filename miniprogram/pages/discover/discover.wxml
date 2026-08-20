@@ -1,10 +1,14 @@
 <view class="discover">
-  <view class="card" bindtap="onTap">
-    <view class="name">车机软件</view>
-    <view class="hint">即将上线</view>
+  <view class="sec">按动力看</view>
+  <view class="grid">
+    <view class="tile" data-power="纯电" catchtap="openFeed"><view class="t">纯电</view><view class="s">SU7 · 007 · 汉 EV</view></view>
+    <view class="tile" data-power="插混" catchtap="openFeed"><view class="t">插混</view><view class="s">汉 DM · 领克 08</view></view>
+    <view class="tile" data-power="增程" catchtap="openFeed"><view class="t">增程</view><view class="s">夏 · 豹5 · 问界</view></view>
+    <view class="tile" catchtap="openFeed"><view class="t">全部车型</view><view class="s">打开动态手册</view></view>
   </view>
-  <view class="card" bindtap="onTap">
-    <view class="name">用车好物</view>
-    <view class="hint">即将上线</view>
-  </view>
+  <view class="sec">按品牌看</view>
+  <view class="tile" data-bucket="byd" catchtap="openFeed"><view class="t">比亚迪族</view><view class="s">汉 / 夏 / 腾势 / 仰望 / 方程豹</view></view>
+  <view class="tile" data-bucket="geely" catchtap="openFeed"><view class="t">吉利族</view><view class="s">银河 / 领克 / 极氪</view></view>
+  <view class="tile" data-bucket="huawei" catchtap="openFeed"><view class="t">鸿蒙智行</view><view class="s">问界 / 智界 / 享界 / 尊界 / 尚界</view></view>
+  <view class="tile" data-bucket="xiaomi" catchtap="openFeed"><view class="t">小米</view><view class="s">SU7 / YU7</view></view>
 </view>

@@ -34,8 +34,11 @@
         data-id="{{item.id}}"
         bindtap="goDetail"
       >
-        <view class="fav-title">{{item.title}}</view>
-        <view class="fav-meta">{{item.bucketText}} · {{item.launchStatusText}}</view>
+        <image wx:if="{{item.cover}}" class="fav-cover" src="{{item.cover}}" mode="aspectFill" />
+        <view class="fav-text">
+          <view class="fav-title">{{item.title}}</view>
+          <view class="fav-meta">{{item.priceText}}</view>
+        </view>
       </view>
     </view>
   </block>

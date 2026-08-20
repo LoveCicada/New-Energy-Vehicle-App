@@ -1,21 +1,44 @@
 .discover {
   padding: var(--space-3);
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
 }
 
-.card {
+.sec {
+  margin: var(--space-2) 0;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.tile {
+  width: 100%;
+  box-sizing: border-box;
   background: var(--color-card);
   border-radius: var(--radius-m);
-  padding: 40rpx var(--space-4);
-  margin-bottom: 20rpx;
+  padding: 28rpx var(--space-3);
+  margin-bottom: 16rpx;
+  min-height: 88rpx;
 }
 
-.name {
-  font-size: 32rpx;
+.grid .tile {
+  width: 48%;
+}
+
+.t {
+  font-size: 30rpx;
   font-weight: 600;
+  color: var(--color-text);
 }
 
-.hint {
-  margin-top: var(--space-1);
+.s {
+  margin-top: 8rpx;
+  font-size: 22rpx;
   color: var(--color-text-3);
-  font-size: 24rpx;
+  line-height: 1.4;
 }
