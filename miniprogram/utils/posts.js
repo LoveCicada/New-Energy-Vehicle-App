@@ -1,5 +1,9 @@
-const LOADED = require('../data/posts.json')
-const RAW = Array.isArray(LOADED) ? LOADED : []
+const LOADED = require('./posts-data.js')
+const RAW = Array.isArray(LOADED)
+  ? LOADED
+  : LOADED && Array.isArray(LOADED.default)
+    ? LOADED.default
+    : []
 const { launchStatusText, bucketText, SUB_BRANDS } = require('./format')
 
 function decorate(p) {

@@ -42,12 +42,14 @@ Page({
       { id: 'huawei', name: BUCKET.huawei },
       { id: 'xiaomi', name: BUCKET.xiaomi }
     ]
-    this.setData({
-      buckets: BUCKETS,
-      tags: TAGS,
-      adUnitIdFeed: get().adUnitIdFeed || ''
-    })
-    this.reload()
+    this.setData(
+      {
+        buckets: BUCKETS,
+        tags: TAGS,
+        adUnitIdFeed: get().adUnitIdFeed || ''
+      },
+      () => this.reload()
+    )
   },
   reload() {
     this.setData({ loading: true })
