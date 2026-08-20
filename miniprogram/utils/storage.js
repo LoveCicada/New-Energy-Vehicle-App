@@ -1,7 +1,8 @@
 const KEYS = {
   user: 'kancar_user',
   follows: 'kancar_follows',
-  favorites: 'kancar_favorites'
+  favorites: 'kancar_favorites',
+  feedIntent: 'kancar_feed_intent'
 }
 
 function getUser() {
@@ -64,6 +65,24 @@ function toggleFavorite(postId) {
   return { favorited: favorited, ids: ids }
 }
 
+function setFeedIntent(intent) {
+  intent = intent || {}
+  wx.setStorageSync(KEYS.feedIntent, {
+    bucketId: intent.bucketId ? String(intent.bucketId) : '',
+    powerTag: intent.powerTag ? String(intent.powerTag) : ''
+  })
+}
+
+function consumeFeedIntent() {
+  const v = wx.getStorageSync(KEYS.feedIntent)
+  wx.removeStorageSync(KEYS.feedIntent)
+  if (!v || typeof v !== 'object') return null
+  return {
+    bucketId: v.bucketId || '',
+    powerTag: v.powerTag || ''
+  }
+}
+
 module.exports = {
   getUser,
   isLoggedIn,
@@ -72,5 +91,7 @@ module.exports = {
   toggleFollow,
   getFavoriteIds,
   isFavorited,
-  toggleFavorite
+  toggleFavorite,
+  setFeedIntent,
+  consumeFeedIntent
 }
