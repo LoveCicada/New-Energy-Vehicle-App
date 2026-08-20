@@ -11,7 +11,9 @@ function decorate(p) {
     _id: p.id || p._id,
     launchStatusText: launchStatusText(p.launchStatus),
     bucketText: bucketText(p.bucketId),
-    subBrandText: SUB_BRANDS[p.subBrandId] || p.subBrandName || p.subBrandId || ''
+    subBrandText: SUB_BRANDS[p.subBrandId] || p.subBrandName || p.subBrandId || '',
+    powerText: (p.powerTags || []).join(' / '),
+    bodyType: p.bodyType || ''
   })
 }
 
@@ -34,12 +36,9 @@ function listPosts(opts) {
       return p.subBrandId === opts.subBrandId
     })
   }
-  if (opts.tags && opts.tags.length) {
+  if (opts.powerTag) {
     list = list.filter(function (p) {
-      const tags = p.tags || []
-      return opts.tags.some(function (t) {
-        return tags.indexOf(t) >= 0
-      })
+      return (p.powerTags || []).indexOf(opts.powerTag) >= 0
     })
   }
   list = list.slice().sort(function (a, b) {
