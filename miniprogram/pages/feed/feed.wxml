@@ -19,34 +19,36 @@
       catchtap="onPower"
     >{{item.name}}</view>
   </view>
-  <view wx:if="{{loading}}" class="empty">加载中</view>
+  <view wx:if="{{loading && !displayList.length}}" class="empty">加载中</view>
   <view wx:elif="{{empty}}" class="empty">
     <view>暂时还没有动态</view>
     <view class="empty-clear" catchtap="clearFilters">清除筛选</view>
   </view>
-  <block wx:for="{{displayList}}" wx:key="id">
-    <view wx:if="{{item.type === 'post'}}" class="card" data-id="{{item.id}}" catchtap="goDetail">
-      <view class="cover-wrap">
-        <view class="cover-fallback">{{item.item.title}}</view>
-        <image
-          wx:if="{{item.item.cover && item.item.coverOk}}"
-          class="cover"
-          src="{{item.item.cover}}"
-          mode="aspectFill"
-          data-id="{{item.id}}"
-          binderror="onCoverError"
-        />
-      </view>
-      <view class="card-body">
-        <view class="title">{{item.item.title}}</view>
-        <view class="price">{{item.item.priceText}}</view>
-        <view class="tagrow">
-          <text class="mini">{{item.item.launchStatusText}}</text>
-          <text wx:if="{{item.item.powerText}}" class="mini">{{item.item.powerText}}</text>
-          <text wx:if="{{item.item.bodyType}}" class="mini">{{item.item.bodyType}}</text>
+  <block wx:else>
+    <block wx:for="{{displayList}}" wx:key="id">
+      <view wx:if="{{item.type === 'post'}}" class="card" data-id="{{item.id}}" catchtap="goDetail">
+        <view class="cover-wrap">
+          <view class="cover-fallback">{{item.item.title}}</view>
+          <image
+            wx:if="{{item.item.cover && item.item.coverOk}}"
+            class="cover"
+            src="{{item.item.cover}}"
+            mode="aspectFill"
+            data-id="{{item.id}}"
+            binderror="onCoverError"
+          />
+        </view>
+        <view class="card-body">
+          <view class="title">{{item.item.title}}</view>
+          <view class="price">{{item.item.priceText}}</view>
+          <view class="tagrow">
+            <text class="mini">{{item.item.launchStatusText}}</text>
+            <text wx:if="{{item.item.powerText}}" class="mini">{{item.item.powerText}}</text>
+            <text wx:if="{{item.item.bodyType}}" class="mini">{{item.item.bodyType}}</text>
+          </view>
         </view>
       </view>
-    </view>
-    <ad-banner wx:elif="{{item.type === 'ad'}}" unit-id="{{item.unitId}}" />
+      <ad-banner wx:elif="{{item.type === 'ad'}}" unit-id="{{item.unitId}}" />
+    </block>
   </block>
 </view>

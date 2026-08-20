@@ -61,7 +61,7 @@ Page({
     this.setData(patch, () => this.reload())
   },
   reload() {
-    this.setData({ loading: true })
+    // listPosts is sync local data — never flash the padded 加载中 block on chip taps
     try {
       const { listPosts } = require('../../utils/posts')
       const list = listPosts({
