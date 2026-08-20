@@ -7,7 +7,8 @@ Page({
   data: {
     post: null,
     adUnitIdDetail: '',
-    favorited: false
+    favorited: false,
+    coverOk: true
   },
   onLoad(query) {
     this.postId = query.id
@@ -22,8 +23,12 @@ Page({
     }
     this.setData({
       post: post,
-      favorited: isFavorited(this.postId)
+      favorited: isFavorited(this.postId),
+      coverOk: true
     })
+  },
+  onCoverError() {
+    this.setData({ coverOk: false })
   },
   openSource() {
     const url = this.data.post && this.data.post.sourceUrl
