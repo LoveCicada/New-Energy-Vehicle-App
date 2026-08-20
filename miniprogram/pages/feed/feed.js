@@ -2,12 +2,13 @@ function toCard(p) {
   return {
     id: p.id,
     title: p.title,
-    summary: p.summary,
-    cover: p.cover,
+    cover: p.cover || '',
     priceText: p.priceText,
     launchStatusText: p.launchStatusText,
-    bucketText: p.bucketText,
-    subBrandText: p.subBrandText
+    powerText: p.powerText,
+    bodyType: p.bodyType,
+    tags: p.tags || [],
+    coverOk: true
   }
 }
 
@@ -17,24 +18,29 @@ function datasetId(e) {
   return String(id)
 }
 
+const POWERS = [
+  { id: '', name: '全部动力' },
+  { id: '纯电', name: '纯电' },
+  { id: '插混', name: '插混' },
+  { id: '增程', name: '增程' }
+]
+
 Page({
   data: {
     buckets: [],
-    tags: [],
+    powers: [],
     bucketId: '',
-    subBrandId: '',
-    selectedTags: [],
+    powerTag: '',
     list: [],
     displayList: [],
     empty: false,
     loading: false,
-    adUnitIdFeed: '',
-    subBrands: []
+    adUnitIdFeed: ''
   },
   onShow() {
     const { get } = require('../../config')
     const { BUCKET } = require('../../utils/format')
-    const TAGS = ['SUV', '轿车', 'MPV', '增程', '纯电', '插混']
+    const { consumeFeedIntent } = require('../../utils/storage')
     const BUCKETS = [
       { id: '', name: '全部' },
       { id: 'byd', name: BUCKET.byd },
@@ -42,14 +48,17 @@ Page({
       { id: 'huawei', name: BUCKET.huawei },
       { id: 'xiaomi', name: BUCKET.xiaomi }
     ]
-    this.setData(
-      {
-        buckets: BUCKETS,
-        tags: TAGS,
-        adUnitIdFeed: get().adUnitIdFeed || ''
-      },
-      () => this.reload()
-    )
+    const patch = {
+      buckets: BUCKETS,
+      powers: POWERS,
+      adUnitIdFeed: get().adUnitIdFeed || ''
+    }
+    const intent = consumeFeedIntent()
+    if (intent) {
+      patch.bucketId = intent.bucketId || ''
+      patch.powerTag = intent.powerTag || ''
+    }
+    this.setData(patch, () => this.reload())
   },
   reload() {
     this.setData({ loading: true })
@@ -57,8 +66,7 @@ Page({
       const { listPosts } = require('../../utils/posts')
       const list = listPosts({
         bucketId: this.data.bucketId || undefined,
-        subBrandId: this.data.subBrandId || undefined,
-        tags: this.data.selectedTags.length ? this.data.selectedTags : undefined,
+        powerTag: this.data.powerTag || undefined,
         page: 1,
         pageSize: 50
       }).map(toCard)
@@ -96,31 +104,25 @@ Page({
     return out
   },
   onBucket(e) {
-    const id = datasetId(e)
-    const { SUB_BY_BUCKET } = require('../../utils/format')
-    const subBrands = id ? SUB_BY_BUCKET[id] || [] : []
-    this.setData(
-      { bucketId: id, subBrandId: '', subBrands: subBrands, selectedTags: [] },
-      () => this.reload()
-    )
+    this.setData({ bucketId: datasetId(e), powerTag: '' }, () => this.reload())
+  },
+  onPower(e) {
+    this.setData({ powerTag: datasetId(e) }, () => this.reload())
   },
   clearFilters() {
-    this.setData(
-      { bucketId: '', subBrandId: '', subBrands: [], selectedTags: [] },
-      () => this.reload()
-    )
+    this.setData({ bucketId: '', powerTag: '' }, () => this.reload())
   },
-  onSubBrand(e) {
-    this.setData({ subBrandId: datasetId(e) }, () => this.reload())
-  },
-  onTag(e) {
-    const tag = e.currentTarget.dataset.tag
-    if (!tag) return
-    const selectedTags = this.data.selectedTags.slice()
-    const i = selectedTags.indexOf(tag)
-    if (i >= 0) selectedTags.splice(i, 1)
-    else selectedTags.push(tag)
-    this.setData({ selectedTags: selectedTags }, () => this.reload())
+  onCoverError(e) {
+    const id = e.currentTarget.dataset.id
+    const displayList = this.data.displayList.map(function (row) {
+      if (row.type === 'post' && String(row.id) === String(id) && row.item) {
+        return Object.assign({}, row, {
+          item: Object.assign({}, row.item, { coverOk: false })
+        })
+      }
+      return row
+    })
+    this.setData({ displayList: displayList })
   },
   goDetail(e) {
     const id = e.currentTarget.dataset.id

@@ -9,10 +9,6 @@
   white-space: normal;
 }
 
-.chips-sub {
-  padding-top: var(--space-1);
-}
-
 .chip {
   display: inline-block;
   flex-shrink: 0;
@@ -48,10 +44,28 @@
   overflow: hidden;
 }
 
+.cover-wrap {
+  position: relative;
+  height: 340rpx;
+  background: var(--color-brand);
+}
+
+.cover-fallback {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
 .cover {
+  position: relative;
   width: 100%;
-  height: 320rpx;
-  background: var(--color-line);
+  height: 340rpx;
+  display: block;
 }
 
 .card-body {
@@ -65,19 +79,21 @@
   color: var(--color-text);
 }
 
-.meta {
-  margin-top: var(--space-1);
+.price {
+  margin-top: 8rpx;
   color: var(--color-brand);
-  font-size: 22rpx;
+  font-size: 30rpx;
+  font-weight: 700;
 }
 
-.summary {
-  margin-top: 12rpx;
-  color: var(--color-text-2);
-  font-size: 26rpx;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
+.tagrow { margin-top: 12rpx; }
+
+.mini {
+  display: inline-block;
+  margin-right: 8rpx;
+  padding: 4rpx 12rpx;
+  background: var(--color-tag-bg);
+  color: var(--color-brand);
+  font-size: 20rpx;
+  border-radius: 6rpx;
 }
